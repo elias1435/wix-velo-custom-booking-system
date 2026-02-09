@@ -1,0 +1,46 @@
+PROMPT 6 — FRONTEND PAGE CODE: LOAD SERVICES + PREVIEW + SLOTS
+On the Book Now page code:
+
+1) Imports:
+- Import wixData
+- Import getAvailability, bookSlot, getCalendarLinks from backend/booking.jsw
+
+2) On page ready:
+- Load Services and populate #serviceDropdown (label=name, value=_id)
+- Disable #datePicker1 until a service is selected
+- Collapse #bookingFormBox
+- Hide/collapse #thankYouBox
+- Clear #statusText
+- Set all preview texts (#previewServiceText, #previewDateText, #previewTimeText, #previewNameText, #previewEmailText, #previewPhoneText) to “—”
+
+3) When #serviceDropdown changes:
+- Enable #datePicker1
+- Update #previewServiceText
+- If a date is already selected, load availability
+
+4) When #datePicker1 changes:
+- Update #previewDateText
+- Load availability if service selected
+
+5) Availability loading:
+- Show “Loading…” in #statusText while fetching
+- Call getAvailability(serviceId, selectedDate)
+- Bind results to #slotsRepeater
+- Hide #slotsRepeater until BOTH service and date are selected
+
+6) Repeater behavior:
+- Show item.label in #slotTimeText
+- If item.available is true:
+  - Enable #slotButton, set label “Book”
+- If item.available is false:
+  - Disable #slotButton, set label “Booked”
+- Clicking an available slot:
+  - Expand #bookingFormBox
+  - Fill #selectedSlotText with chosen info
+  - Update #previewTimeText
+  - Store selected slotStartISO, slotEndISO, slotKey, slotLabel, serviceId, serviceName in page state variables
+
+7) Live preview updates:
+- On #nameInput change -> update #previewNameText
+- On #emailInput change -> update #previewEmailText
+- On #phoneInput change -> update #previewPhoneText
