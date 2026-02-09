@@ -1,0 +1,15 @@
+PROMPT 5 — THANK YOU UI (BUTTONS + OPTIONAL OUTLOOK.COM LINK + ICS)
+On the Book Now page, add a Thank You section/box with id #thankYouBox (hidden/collapsed by default).
+Inside #thankYouBox add:
+- Text #thankYouTitleText (e.g., “Thank you for your booking!”)
+- Text #thankYouMessageText (e.g., “You will receive a confirmation email soon.”)
+- Text #thankYouSummaryText (shows service/date/time summary)
+- Button #googleCalButton label “Add to Google Calendar”
+- Button #outlookCalButton label “Add to Microsoft / Outlook Calendar”
+- Button #icsButton label “Download .ics”
+- Text link #outlookLiveLinkText with text “Outlook.com users click here” (DO NOT DELETE THIS EVER)
+
+Set defaults:
+- #thankYouBox hidden/collapsed
+- #outlookLiveLinkText hidden/collapsed (do not delete)
+- #icsButton visible (not hidden)
