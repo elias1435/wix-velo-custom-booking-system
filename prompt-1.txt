@@ -1,0 +1,25 @@
+PROMPT 1 — CREATE PAGE + UI (BOOK NOW)
+Create a new Wix page named “Book Now”.
+Add these elements and set their IDs exactly:
+1) Date Picker id #datePicker1
+2) Dropdown id #serviceDropdown
+3) Repeater id #slotsRepeater containing:
+   - Text id #slotTimeText
+   - Button id #slotButton
+4) Box/Section id #bookingFormBox (collapsed by default) containing:
+   - Input id #nameInput
+   - Input id #emailInput
+   - Input id #phoneInput
+   - Text id #selectedSlotText
+   - Button id #confirmBookingButton
+5) Text id #statusText for messages
+
+Also add a right-side preview panel (box/section) id #previewBox with Text elements:
+- #previewServiceText
+- #previewDateText
+- #previewTimeText
+- #previewNameText
+- #previewEmailText
+- #previewPhoneText
+Default preview values should be “—”.
+Make sure all IDs match exactly and #bookingFormBox starts collapsed.
