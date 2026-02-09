@@ -1,0 +1,27 @@
+PROMPT 2 — CMS COLLECTIONS + PERMISSIONS (NOTE: START/END ARE TEXT FIELDS)
+Create 2 CMS collections:
+
+A) Services (collection id: Services) fields:
+- name (text)
+- slotDurationMins (number) default 30
+- dailyStartTime (text) example "09:00"
+- dailyEndTime (text) example "17:00"
+
+B) Bookings (collection id: Bookings) fields:
+- serviceId (text)
+- serviceName (text)
+- startDateTime (text)  // store ISO string as TEXT (not date field)
+- endDateTime (text)    // store ISO string as TEXT (not date field)
+- slotKey (text) MUST be unique
+- customerName (text)
+- customerEmail (text)
+- customerPhone (text)
+- status (text) default "confirmed"
+
+Set Bookings permissions:
+- Create: Anyone
+- Read: Admin only
+- Update: Admin only
+- Delete: Admin only
+
+Ensure slotKey has a uniqueness constraint/index so duplicates fail.
