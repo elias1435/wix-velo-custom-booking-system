@@ -16,8 +16,8 @@ A reusable prompt pack + implementation outline for building a fully custom book
 - Optional email confirmations via **Wix Automations**
 
 ## Screenshots
-![Booking UI](https://github.com/elias1435/wix-velo-custom-booking-system/blob/main/wix-booking-2.webp)
-![Thank You + Calendar Buttons](https://github.com/elias1435/wix-velo-custom-booking-system/blob/main/wix-booking-1.jpg)
+![Booking UI](https://github.com/elias1435/wix-velo-custom-booking-system/blob/main/wix-booking-1.jpg)
+![Thank You + Calendar Buttons](https://github.com/elias1435/wix-velo-custom-booking-system/blob/main/wix-booking-2.webp)
 
 ## Data Model (CMS)
 
