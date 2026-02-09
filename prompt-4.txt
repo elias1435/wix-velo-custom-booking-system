@@ -1,0 +1,47 @@
+PROMPT 4 — BACKEND MODULE: booking.jsw (AVAILABILITY + BOOKING + CALENDAR LINKS)
+Create backend web module file backend/booking.jsw that exports:
+1) getAvailability(serviceId, selectedDate)
+2) bookSlot({ serviceId, serviceName, slotStartISO, slotEndISO, customerName, customerEmail, customerPhone })
+3) getCalendarLinks({ title, description, location, startISO, endISO })
+
+REQUIREMENTS:
+
+A) getAvailability(serviceId, selectedDate):
+- selectedDate is a Date chosen from the date picker; treat it as a DAY (ignore time).
+- Load the service from Services by _id = serviceId.
+- Generate all time slots between service dailyStartTime and dailyEndTime using slotDurationMins.
+- IMPORTANT: Because Bookings.startDateTime and Bookings.endDateTime are TEXT, you must compare using slotKey (not date range filtering).
+- Query Bookings where:
+  - serviceId equals serviceId
+  - status != "cancelled"
+- Build a Set of booked slotKeys from results.
+- For each generated slot, compute slotKey EXACTLY as:
+  `${serviceId}_${YYYY-MM-DD}_${HH:mm}` (24-hour)
+  where YYYY-MM-DD comes from selectedDate, and HH:mm comes from the slot start time.
+- Mark available = !bookedKeys.has(slotKey).
+- Return array:
+  [{ label:"09:00 AM", startISO:"...", endISO:"...", slotKey:"...", available:true/false }]
+
+B) bookSlot(...):
+- Compute slotKey using the SAME format:
+  `${serviceId}_${YYYY-MM-DD}_${HH:mm}` derived from slotStartISO.
+- Insert into Bookings with:
+  serviceId, serviceName,
+  startDateTime = slotStartISO (TEXT),
+  endDateTime = slotEndISO (TEXT),
+  slotKey,
+  customerName, customerEmail, customerPhone,
+  status="confirmed"
+- If insert fails due to unique slotKey already existing, return:
+  { ok:false, message:"This slot is already booked." }
+- Else return { ok:true }
+
+C) getCalendarLinks(...):
+Return:
+- outlookOfficeUrl using:
+  https://outlook.office.com/calendar/deeplink/compose?subject=...&startdt=...&enddt=...&location=...&body=...
+- outlookLiveUrl using:
+  https://outlook.live.com/owa/?path=/calendar/action/compose&rru=addevent&startdt=...&enddt=...&subject=...&location=...&body=...
+- googleUrl using Google Calendar render URL with text/dates/details
+- icsContent string for a valid .ics calendar file (VCALENDAR/VEVENT)
+All values must be URL-encoded properly.
