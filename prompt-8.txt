@@ -1,0 +1,8 @@
+PROMPT 8 — EMAIL CONFIRMATION (NO CODE, WIX AUTOMATIONS)
+Set up a Wix Automation:
+Trigger: When a new item is created in the Bookings CMS collection.
+Action: Send an email to the customerEmail field.
+Email body should include:
+- Service name
+- Booking date/time (from startDateTime text)
+- Short message confirming they will receive details shortly
