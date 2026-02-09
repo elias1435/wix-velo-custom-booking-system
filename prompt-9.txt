@@ -1,0 +1,8 @@
+PROMPT 9 — DEBUG / RELIABILITY (TEMP LOGS) FOR BOOKED SLOTS
+Add temporary debug logging:
+- In backend getAvailability:
+  log bookedKeys size and sample slotKeys
+- In frontend after availability load:
+  log first 5 items returned (label, slotKey, available)
+Goal: confirm slotKey formatting matches exactly between booking insert and availability check.
+Provide a quick way (comment flag) to turn logs off later.
