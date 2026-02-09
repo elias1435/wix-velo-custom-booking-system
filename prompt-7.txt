@@ -1,0 +1,48 @@
+PROMPT 7 — FRONTEND PAGE CODE: CONFIRM BOOKING + REFRESH + THANK YOU + CALENDAR BUTTONS
+Implement #confirmBookingButton click:
+
+1) Validate:
+- service selected
+- date selected
+- slotStartISO + slotEndISO exist
+- nameInput not empty
+- emailInput not empty and contains "@"
+- phoneInput not empty
+
+2) Submit:
+- Disable #confirmBookingButton during submit
+- Call bookSlot({
+   serviceId, serviceName,
+   slotStartISO, slotEndISO,
+   customerName, customerEmail, customerPhone
+  })
+
+3) If result.ok is true:
+- Show success message in #statusText
+- Collapse #bookingFormBox
+- Clear #nameInput, #emailInput, #phoneInput
+- Refresh availability by calling getAvailability again so the slot becomes “Booked”
+- Build Thank You summary from preview state and show it in #thankYouSummaryText
+- Show/expand #thankYouBox
+- Set thank you message: “You will receive a confirmation email soon.”
+
+- Call getCalendarLinks({
+    title: serviceName,
+    description: "Booking confirmed",
+    location: "",
+    startISO: slotStartISO,
+    endISO: slotEndISO
+  })
+
+- Set:
+  #googleCalButton link = googleUrl (open new tab)
+  #outlookCalButton link = outlookOfficeUrl (open new tab)
+  Keep #outlookLiveLinkText hidden (do not delete) but set its link to outlookLiveUrl for later use.
+  Ensure #icsButton works using icsContent (download/open .ics)
+
+4) If result.ok is false:
+- Show result.message in #statusText
+
+5) Finally:
+- Re-enable #confirmBookingButton
+- Add try/catch and show friendly errors in #statusText
