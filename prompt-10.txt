@@ -1,0 +1,9 @@
+PROMPT 10 — FINAL UX POLISH
+Improve UX:
+- If no service selected, show “Please select a service” and keep slots hidden.
+- If no date selected, show “Please select a date” and keep slots hidden.
+- If getAvailability returns 0 slots, show “No slots available”.
+- On booking success, scroll to #thankYouBox.
+- Keep #outlookLiveLinkText hidden by default and never delete it.
+- Keep #icsButton visible.
+- Ensure booked slots always show “Booked” and remain disabled.
