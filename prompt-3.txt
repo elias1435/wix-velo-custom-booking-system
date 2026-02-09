@@ -1,0 +1,6 @@
+PROMPT 3 — SEED A SERVICE
+Insert 1 sample record into the Services collection:
+name="Consultation"
+slotDurationMins=30
+dailyStartTime="09:00"
+dailyEndTime="17:00"
