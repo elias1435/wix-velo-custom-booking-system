@@ -1,0 +1,41 @@
+PROMPT — ADMIN EMAIL TEMPLATE + “ADD TO MICROSOFT / OUTLOOK CALENDAR” BUTTON (DYNAMIC CMS DATA)
+
+Create an email template (for Wix Automations / Triggered Email) for the admin notification using my Bookings CMS dynamic fields.
+My start/end datetime values are TEXT fields and available as:
+${data.startDateTimeText}
+${data.endDateTimeText}
+
+EMAIL CONTENT REQUIREMENTS
+1) Email body must start with exactly this (keep variables as-is):
+
+Hello ${data.customerName},
+
+Thank you for your booking. Below are the details:
+
+Service Name: ${data.serviceName}
+Start Date and Time: ${data.startDateTimeText}
+End Date and Time: ${data.endDateTimeText}
+Phone: ${data.customerPhone}
+Customer Email: ${data.customerEmail}
+
+Thank you,
+Alka Financial Services Ltd.
+
+2) After the text above, add a primary button:
+Button label: “Add to Microsoft / Outlook Calendar”
+
+3) The button must link to a Microsoft Outlook Web calendar event compose URL using dynamic data:
+- subject = ${data.serviceName}
+- startdt = ${data.startDateTimeText}
+- enddt = ${data.endDateTimeText}
+- body should include the same booking details (service name, start, end, phone, email)
+Use this base URL:
+https://outlook.office.com/calendar/deeplink/compose?subject=...&startdt=...&enddt=...&body=...
+
+IMPORTANT
+- URL encode parameters (spaces, line breaks, etc.) so the link works.
+- If ${data.startDateTimeText} is not in ISO format, convert/format it to ISO string (YYYY-MM-DDTHH:mm:ss) before using in the link (or create a formatted field in CMS and use that in the URL).
+- Keep the button visible and clickable in the email.
+
+OUTPUT
+- Provide the final email template content (HTML or Wix email editor compatible content) including the dynamic button link.
